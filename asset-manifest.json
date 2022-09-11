@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/CDAC_Project/static/css/main.b408058a.css",
+    "main.js": "/CDAC_Project/static/js/main.c1ff1088.js",
+    "static/js/787.415ee728.chunk.js": "/CDAC_Project/static/js/787.415ee728.chunk.js",
+    "static/media/background.jpg": "/CDAC_Project/static/media/background.89b01c59a441326d2b1e.jpg",
+    "index.html": "/CDAC_Project/index.html",
+    "main.b408058a.css.map": "/CDAC_Project/static/css/main.b408058a.css.map",
+    "main.c1ff1088.js.map": "/CDAC_Project/static/js/main.c1ff1088.js.map",
+    "787.415ee728.chunk.js.map": "/CDAC_Project/static/js/787.415ee728.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b408058a.css",
+    "static/js/main.c1ff1088.js"
+  ]
+}
