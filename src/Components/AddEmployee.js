@@ -1,5 +1,7 @@
 import { useFormik } from 'formik'
 import React from 'react'
+import axios from 'axios';
+
 import {
     Modal,
     Button,
@@ -61,8 +63,19 @@ export default function AddEmployee()
         initialValues:{Id:'',FName:'',LName:'',Email:'',Mobile:'',Address:'',Designation:'',HireDate:'',Salary:''},
         validate:validateEmployee,
         onSubmit:(values)=>{alert(JSON.stringify(values))}
+
+        
     })
 
+    const apiGet = () =>{
+        // fetch('http://localhost:8080/employees')
+        // .then((response)=>response.json())
+        // .then((json)=>console.log(json));
+
+        axios.post('http://localhost:8080/employees',this.state.initialValues)
+        .then((res)=>console.log(res))
+        .catch(()=>console.log('not inserted'))
+    };
 
   return (
     <div>
@@ -183,7 +196,7 @@ export default function AddEmployee()
           </DropdownButton> */}
 
 
-            <button className='btn btn-primary mt-2'>Add Employee</button> 
+            <button className='btn btn-primary mt-2' onClick={apiGet}>Add Employee</button> 
         </form>
     </div>
   )
