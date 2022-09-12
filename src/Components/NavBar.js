@@ -7,6 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
+
 export default function NavBar() {
     return (
         <Navbar collapseOnSelect expand="lg" bg='primary'>
@@ -29,15 +30,15 @@ export default function NavBar() {
 
                 </NavDropdown>
                 
-                <Nav.Link href="">Home</Nav.Link>
-                <Nav.Link href="">About Us</Nav.Link>
-                <Nav.Link href="">Contact</Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b><i className="fa fa-fw fa-home"></i>Home</b></Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b>About Us</b></Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b>Contact</b></Nav.Link>
               </Nav>
 
               <Nav>
-                <Nav.Link href="">Login</Nav.Link>
-                <Nav.Link href="">Registration</Nav.Link>
-                <Nav.Link href="">Book Appoyment</Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b>Login</b></Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b>Registration</b></Nav.Link>
+                <Nav.Link href="" style={{color:"black"}}><b>Book Appoinment</b></Nav.Link>
               </Nav>
             </Navbar.Collapse>
 
