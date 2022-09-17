@@ -60,7 +60,8 @@ import {
 export default function AddEmployee() 
 {
     const formik = useFormik({
-        initialValues:{Id:'',FName:'',LName:'',Email:'',Mobile:'',Address:'',Designation:'',HireDate:'',Salary:''},
+        initialValues:{Id:'',FName:'',LName:'',Email:'',Mobile:'',Address:'',BDate:'',Designation:'',HireDate:'',
+        Salary:'',DeptName:''},
         validate:validateEmployee,
         onSubmit:(values)=>{alert(JSON.stringify(values))}
 
@@ -79,6 +80,19 @@ export default function AddEmployee()
 
   return (
     <div>
+{/* // emp_id int auto_increment,
+// emp_first_name varchar(50),
+// emp_last_name varchar(50),
+// mobile varchar(10) not null,
+// email varchar (100),
+// dob date,
+// address varchar(300),
+// salary int,
+// hiring_date date,
+// designation varchar(50),
+// department_name varchar(100), */}
+
+
         <h3>Add Employee</h3>
         <form onSubmit={formik.handleSubmit}>
             {/* <div className='form-group col-6'>
@@ -102,6 +116,13 @@ export default function AddEmployee()
             </div>
     
             <div className='form-group col-6'>
+                <label><b>Mobile</b></label>
+                <input type="text" name="Mobile" className='form-control' value={formik.values.Mobile}
+                onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.errors.Mobile ? <span className='text-danger'>{formik.errors.Mobile}</span> : null}
+            </div>
+
+            <div className='form-group col-6'>
                 <label><b>Email</b></label>
                 <input type="text" name="Email" className='form-control' value={formik.values.Email}
                 onChange={formik.handleChange} onBlur={formik.handleBlur}/>
@@ -109,11 +130,13 @@ export default function AddEmployee()
             </div>
 
             <div className='form-group col-6'>
-                <label><b>Mobile</b></label>
-                <input type="text" name="Mobile" className='form-control' value={formik.values.Mobile}
+                <label><b>Date</b></label>
+                <input type="text" name="date" className='form-control' value={formik.values.BDate}
                 onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-                {formik.errors.Mobile ? <span className='text-danger'>{formik.errors.Mobile}</span> : null}
+                {formik.errors.BDate ? <span className='text-danger'>{formik.errors.BDate}</span> : null}
             </div>
+
+            
 
             <div className='form-group col-6'>
                 <label><b>Address</b></label>
@@ -123,10 +146,10 @@ export default function AddEmployee()
             </div>
 
             <div className='form-group col-6'>
-                <label><b>Designation</b></label>
-                <input type="text" name="Designation" className='form-control' value={formik.values.Designation}
+                <label><b>Salary</b></label>
+                <input type="text" name="Salary" className='form-control' value={formik.values.Salary}
                 onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-                {formik.errors.Designation ? <span className='text-danger'>{formik.errors.Designation}</span> : null}
+                 {formik.errors.Salary?<span className="text-danger">{formik.errors.Salary}</span>:null}
             </div>
 
             <div className='form-group col-6'>
@@ -137,68 +160,24 @@ export default function AddEmployee()
             </div>
 
             <div className='form-group col-6'>
-                <label><b>Salary</b></label>
-                <input type="text" name="Salary" className='form-control' value={formik.values.Salary}
+                <label><b>Designation</b></label>
+                <input type="text" name="Designation" className='form-control' value={formik.values.Designation}
                 onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-                 {formik.errors.Salary?<span className="text-danger">{formik.errors.Salary}</span>:null}
+                {formik.errors.Designation ? <span className='text-danger'>{formik.errors.Designation}</span> : null}
             </div>
-            
 
-            {/* ====================================role================================= */}
-          {/* <DropdownButton
-            size="sm"
-            title={role}
-            style={{ marginTop: "10px" }}
-            variant="warning"
-          >
-            <Dropdown.Item as="Button">
-              <div
-                onClick={(e) => {
-                  setDoctorOptionFlag(false);
-                  setRole(e.target.innerText);
-                }}
-              >
-                admin
-              </div>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <div
-                onClick={(e) => {
-                  setDoctorOptionFlag(false);
-                  setRole(e.target.innerText);
-                }}
-              >
-                accountant
-              </div>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <div
-                onClick={(e) => {
-                  setDoctorOptionFlag(false);
-                  setRole(e.target.innerText);
-                }}
-              >
-                reception
-              </div>
-            </Dropdown.Item>
-           
-            <Dropdown.Item>
-              <div
-                onClick={(e) => {
-                  setDoctorOptionFlag(true);
-                  setRole(e.target.innerText);
-                  // adding additional functionalities of doctor
-                }}
-              >
-                doctor
-              </div>
-            </Dropdown.Item>
-          </DropdownButton> */}
-
+            <div className='form-group col-6'>
+                <label><b>Department Name</b></label>
+                <input type="text" name="DeptName" className='form-control' value={formik.values.DeptName}
+                onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.errors.DeptName ? <span className='text-danger'>{formik.errors.DeptName}</span> : null}
+            </div>
 
             <button className='btn btn-primary mt-2' onClick={apiGet}>Add Employee</button> 
         </form>
     </div>
   )
 }
+
+
 
