@@ -1,98 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
 import { ToastContainer, toast } from 'react-toastify';
 import { Clinicregister } from '../Services/Clinic_Service';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function ClinicForm() 
 {
-    
-    const[data, setData] = useState({
+    //8
+    const navigate = useNavigate();
+
+    // 3--------------------------------
+    const [user, setUser] = useState({
         
-        clinicId:'',
+        id:'',
         clinicName:'',
-        clinicMTime:'',
-        clinicATime:'',
+        morningTime:'',
+        afternoonTime:'',
         clinicAddress:'',
-        clinicETime:'',
+        eveningTime:'',
         clinicPhone:'',
         registrationDate:''
     })
+    const {id,clinicName,morningTime,afternoonTime,clinicAddress,eveningTime,clinicPhone,registrationDate} = user
 
-    //If any error occured
-    const [error,setError] = useState({
-        errors:{},
-        isError:false
-    })
 
-    //it is a hook..to print data on console in json format
-    // useEffect(()=>{
-    //     console.log(data);
-    // },[data])
+    // 5-----------------
+    const onInputChange = e => {
+        console.log(e.target.value)
 
-    const handleChange = (event,property) => {
-        //console.log("Name Changed");
-        //console.log(event.target.value);        //to see actual field value on console
-
-        //dynamic setting the values
-        setData({...data,[property]:event.target.value})
+        //6
+        setUser({...user, [e.target.name] : e.target.value})
     }
 
-    //reset the form
-    const resetData = () => {
-        setData({
-            clinicId:'',
-            clinicName:'',
-            clinicMTime:'',
-            clinicATime:'',
-            clinicAddress:'',
-            clinicETime:'',
-            clinicPhone:'',
-            registrationDate:''
-        })
+    //7
+    const onFormSubmit = async (e )=>{
+        e.preventDefault();
+
+        //to add data
+        await axios.post("http://localhost:8080/clinics",user);
+
+        // 9 after data is submitted goto PatientList
+        //history.push("/CDAC_Project/PatientList")
+        navigate('/CDAC_Project/ClinicList')
     }
-
-    //submit form
-    const submitForm = (event) =>{
-        event.preventDefault()      //stops the default behaviour of form
-
-        if(error.isError){
-            toast.error("Details are Invalid..Please Correct First...!");
-            return;
-        }
-        console.log(data);
-
-        //data validation
-
-        //call server api for sending data
-        Clinicregister(data).then((resp)=>{
-            console.log(resp);
-            console.log("Success")
-
-            toast.success("You are registered successfully...!");
-            setData({
-                clinicId:'',
-                clinicName:'',
-                clinicMTime:'',
-                clinicATime:'',
-                clinicAddress:'',
-                clinicETime:'',
-                clinicPhone:'',
-                registrationDate:''
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-            console.log("Error")
-
-            //handle errors
-            setError({
-                errors:error,
-                isError:true
-            })
-        });
-    }
-
+    
   return (
     <div>
         <Container style={{width:600}} className="mt-20">
@@ -102,11 +55,11 @@ export default function ClinicForm()
 
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h3>Clinic Form</h3>
+                    <h3>Clinic Details</h3>
                 </CardHeader>
 
                 <CardBody>
-                    <Form onSubmit={submitForm}>
+                    <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
                         <Col md={8}>
                             <FormGroup>
@@ -115,11 +68,11 @@ export default function ClinicForm()
                                 </Label>
                                 <Input
                                 id="clinicId"
-                                name="clinicId"
+                                name="id"
                                 placeholder="Clinic Id"
                                 type="text"
-                                onChange={(e)=>handleChange(e,'clinicId')}
-                                value={data.id}
+                                value={id}  //bcoz of 5..no need to write user.id
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -130,11 +83,11 @@ export default function ClinicForm()
                                 </Label>
                                 <Input
                                 id="clinicMTime"
-                                name="clinicMTime"
+                                name="morningTime"
                                 placeholder="Morining Time"
                                 type="text"
-                                onChange={(e)=>handleChange(e,'clinicMTime')}
-                                value={data.morningTime}
+                                value={morningTime}  
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -149,9 +102,8 @@ export default function ClinicForm()
                             name="clinicName"
                             placeholder="Enter Clinic name"
                             type="text"
-                            onChange={(e)=>handleChange(e,'clinicName')}
-                            value={data.clinicName}
-                            //invalid={error.errors?.resp?.data?.clinicName ? true:false}
+                            value={clinicName}  
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
@@ -163,11 +115,11 @@ export default function ClinicForm()
                                 </Label>
                                 <Input
                                 id="clinicATime"
-                                name="clinicATime"
+                                name="afternoonTime"
                                 placeholder="Afternoon Time"
                                 type="text"
-                                onChange={(e)=>handleChange(e,'clinicATime')}
-                                value={data.afternoonTime}
+                                value={afternoonTime}  
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -182,8 +134,8 @@ export default function ClinicForm()
                             name="clinicAddress"
                             placeholder="Enter Address"
                             type='textarea'
-                            onChange={(e)=>handleChange(e,'clinicAddress')}
-                            value={data.clinicAddress}
+                            value={clinicAddress}  
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
@@ -195,11 +147,11 @@ export default function ClinicForm()
                                 </Label>
                                 <Input
                                 id="clinicETime"
-                                name="clinicETime"
+                                name="eveningTime"
                                 placeholder="Evening Time"
                                 type="text"
-                                onChange={(e)=>handleChange(e,'clinicETime')}
-                                value={data.eveningTime}
+                                value={eveningTime}  
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -214,8 +166,8 @@ export default function ClinicForm()
                             id="clinicPhone"
                             name="clinicPhone"
                             placeholder="Enter Phone Number"
-                            onChange={(e)=>handleChange(e,'clinicPhone')}
-                            value={data.clinicPhone}
+                            value={clinicPhone}  
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
@@ -230,8 +182,8 @@ export default function ClinicForm()
                                 name="registrationDate"
                                 placeholder="Select Date"
                                 type="date"
-                                onChange={(e)=>handleChange(e,'registrationDate')}
-                                value={data.registrationDate}
+                                value={registrationDate}  
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -239,16 +191,13 @@ export default function ClinicForm()
                         
                         <Container>
                             <Button color="dark">
-                                    Register
+                                    Submit
                             </Button>
-                            <Button color="dark" className='ms-2' type='reset' onClick={resetData}>
-                                    Reset
+                            <Button color="dark" className='ms-2' type='reset'>
+                                    Clear
                             </Button>
                         </Container>
                     </Form>
-
-
-                    
                 </CardBody>
             </Card>
         </Container>

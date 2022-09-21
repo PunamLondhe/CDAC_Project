@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function PatientList()
+export default function EmployeeList()
 {
     //1---------------------------------------------
     const [users, setUser] = useState([]);
@@ -18,7 +18,7 @@ export default function PatientList()
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/patients");
+        const result = await axios.get("http://localhost:8080/employees");
         console.log(result);
         setUser(result.data);
     }
@@ -26,9 +26,9 @@ export default function PatientList()
 
 
     //for patient deletion
-    const deletePatient = async id =>{
+    const deleteEmployee = async id =>{
 
-        await axios.delete(`http://localhost:8080/patients/${id}`);
+        await axios.delete(`http://localhost:8080/employees/${id}`);
         loadUsers();
     }
 
@@ -37,7 +37,7 @@ export default function PatientList()
         <Container style={{width:1200}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h2>Patients List</h2>
+                    <h2>Employee List</h2>
 
                     <Row>
                         <Col md={7}>
@@ -47,7 +47,7 @@ export default function PatientList()
                         <Col md={2}>
                             <center>
                             {/* 2--------------------------------------------------------- */}
-                            <Link className='btn btn-outline-success'to="/CDAC_Project/PatientForm">+ Add Patient</Link>
+                            <Link className='btn btn-outline-success'to="/CDAC_Project/EmployeeForm">+ Add Employee</Link>
                             </center>
                         </Col>
                     </Row>
@@ -59,25 +59,28 @@ export default function PatientList()
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Age</th>
-                                <th>Email</th>
                                 <th>Phone No</th>
+                                <th>Email</th>
                                 <th>Address</th>
-                                
+
                                 <th>Action</th>
                                 {/* <th></th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* // id int auto_increment,
-                            // first_name varchar (50) not null,
-                            // last_name varchar(50),
-                            // age tinyint,
-                            // mobile varchar(10) default 'NA',
-                            // email varchar (100),
-                            // address varchar(300),
-                            // dept_id int, 
-                            // employee_id int, */}
+                            {/* private Long id;
+                                private String empFirstName;
+                                private String empLastName;
+                                private String mobile;
+                                private String gender;
+                                private String email;
+                                private String dob;
+                                private String address;
+                                private int salary;
+                                private String hiringDate;
+                                private String designation;
+                                private Long deptId;
+                            */}
 
                             {/* 2.display data on form  */}
                             {
@@ -85,20 +88,27 @@ export default function PatientList()
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
                                         <td>{user.id}</td>
-                                        <td>{user.firstName} {" "} {user.lastName}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.email}</td>
+                                        <td>{user.empFirstName}{" "}{user.empLastName}</td>
+                                        {/* <td>{user.empLastName}</td> */}
                                         <td>{user.mobile}</td>
-                                        <td>{user.address}</td>
-                                        {/* <td>{user.id}</td> */}
+                                        <td>{user.email}</td>
+                                        <td>{user.address}</td> 
 
+                                        {/* <td>{user.gender}</td>
+                                        <td>{user.dob}</td>
+                                        <td>{user.salary}</td>
+                                        <td>{user.hiring_date}</td>
+                                        <td>{user.designation}</td> 
+                                        <td>{user.deptId}</td>   */}
+                                       
                                         <td>
-                                            {/* <Link className='btn btn-outline-success'>View</Link>
-                                            {" "} */}
-                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/PatientUpdate/${user.id}`}>
+                                            <Link className='btn btn-outline-success' to={`/CDAC_Project/EmployeeView/${user.id}`}>
+                                                View</Link>
+                                            {" "}
+                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/EmployeeUpdate/${user.id}`}>
                                                 Update</Link>
                                             {" "}
-                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>Delete</Link>
+                                            <Link className='btn btn-outline-danger' onClick={() => deleteEmployee(user.id)}>Delete</Link>
                                         </td>
                                     </tr>
                                 ))

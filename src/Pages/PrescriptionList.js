@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 // export default function ClinicList() {
-const ClinicList = () => {
+const PrescriptionList = () => {
 
     //for goto Clinic form
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const ClinicList = () => {
     
     //3 
     const loadUser = async () => {
-         const result = await axios.get("http://localhost:8080/clinics");
+         const result = await axios.get("http://localhost:8080/prescriptions");
          console.log(result);
          setUser(result.data);
     }
@@ -30,7 +30,7 @@ const ClinicList = () => {
 
     const deleteUser = async id =>{
 
-        await axios.delete(`http://localhost:8080/clinics/${id}`);
+        await axios.delete(`http://localhost:8080/prescriptions/${id}`);
         loadUser();
     }
 
@@ -39,7 +39,7 @@ const ClinicList = () => {
         <Container style={{width:1200}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h1>Clinic'S List</h1>
+                    <h1>Prescription List</h1>
 
                     <Row>
                         <Col md={7}>
@@ -54,10 +54,10 @@ const ClinicList = () => {
                                 //size="sm"
                                 //for goto Clinic form
                                 onClick={()=>{
-                                    navigate("/CDAC_Project/ClinicForm")
+                                    navigate("/CDAC_Project/PrescriptionForm")
                                 }}
                             >
-                                + Add Clinic
+                                + Add 
                             </Button>
                             </center>
                         </Col>
@@ -68,38 +68,42 @@ const ClinicList = () => {
                     <Table striped>
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Clinic Name</th>
-                                <th>Address</th>
-                                <th>Phone No</th>
-                                <th>Morning Time</th>
-                                <th>Afternoon Time</th>
-                                <th>Evening Time</th>
-                                <th>Registration Date</th>
+                            {/* private String prescriptionDate;
+                            private String diagnosis;
+                            private short quantity;
+                            private short duration;
+                            private String frequency;
+                            private String remarks;
+                            private Long patientId; */}
+                                {/* <th>Id</th> */}
+                                <th>Patient Id</th>
+                                <th>Diagnosis</th>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <th>Duration</th>
+                                <th>Frequency</th>
+                                <th>Remarks</th>
                                 <th><center>Action</center></th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                // clinicName;
-                                // private String clinicAddress;
-                                // private String clinicPhone;
-                                // private String morningTime;
-                                // private String afternoonTime;
-                                // private String eveningTime;
-                                // private String registrationDate;
                                 users.map(item =>
                                     <tr>
-                                        <td>{item.id}</td>
-                                        <td>{item.clinicName}</td>
-                                        <td>{item.clinicAddress}</td>
-                                        <td>{item.clinicPhone}</td>
-                                        <td>{item.morningTime}</td>
-                                        <td>{item.afternoonTime}</td>
-                                        <td>{item.eveningTime}</td>
-                                        <td>{item.registrationDate}</td>
+                                        {/* <td>{item.id}</td> */}
+                                        <td>{item.patientId}</td>
+                                        <td>{item.diagnosis}</td>
+                                        <td>{item.prescriptionDate}</td>                              
+                                        <td>{item.quantity}</td>
+                                        <td>{item.duration}</td>
+                                        <td>{item.frequency}</td>
+                                        <td>{item.remarks}</td>
+                                        
                                         <td>
-                                        <Link className='btn btn-outline-primary' to={`/CDAC_Project/ClinicUpdate/${item.id}`}>
+                                            <Link className='btn btn-outline-success' to={`/CDAC_Project/PrescriptionView/${item.id}`}>
+                                                View</Link>
+                                            {" "}
+                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/PrescriptionUpdate/${item.id}`}>
                                                 Update</Link>
                                             {" "}
                                             <Link className='btn btn-outline-danger' onClick={() => deleteUser(item.id)}>Delete</Link>
@@ -119,4 +123,4 @@ const ClinicList = () => {
         
   )
 }
-export default ClinicList;
+export default PrescriptionList;

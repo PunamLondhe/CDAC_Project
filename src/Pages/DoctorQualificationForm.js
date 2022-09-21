@@ -1,21 +1,53 @@
-// doc_qualification_id int auto_increment,
-// graduation varchar(100),
-// graduation_complition_year year,
-// post_grad varchar(100),
-// post_grad_complition_year year,
-// medical_registration_no long,
-// additional_qualification varchar(100),
-// additional_qualification_complition_year year,
-// experience tinyint,
-// emp_id int unique,
-
-
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Container } from 'react-bootstrap'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
 
 export default function DoctorQualificationForm() 
 {
+    //8
+    // let history = useHistory();
+    const navigate = useNavigate();
+
+    //3
+    const [user, setUser] = useState({
+
+        //initial values
+        id:'',
+        employeeId:'',
+        graduation:'',
+        graduationCompletionYear:'',
+        postGrad:'',
+        postGradCompletionYear:'',
+        additionalQualification:'',
+        additionalQualificationCompletionYear:'',
+        medicalRegistrationNo:'',
+        experience:''
+    });
+
+    const {id,employeeId,graduation,graduationCompletionYear,postGrad,postGradCompletionYear,
+        additionalQualification,additionalQualificationCompletionYear,medicalRegistrationNo,experience} = user
+
+    // 5-----------------
+    const onInputChange = e => {
+        console.log(e.target.value)
+
+        //6
+        setUser({...user, [e.target.name] : e.target.value})
+    }
+
+    //7
+    const onFormSubmit = async e => {
+        e.preventDefault();
+
+        //to add data
+        await axios.post("http://localhost:8080/docQualifications", user);
+
+        // 9 after data is submitted goto PatientList
+        navigate('/CDAC_Project/DoctorQualificationList')
+    }
+
   return (
     <div>
         <Container style={{width:800}} className="mt-20">
@@ -25,8 +57,9 @@ export default function DoctorQualificationForm()
                 </CardHeader>
 
                 <CardBody>
-                    <Form>
+                    <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
+                        
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="qualId">
@@ -34,9 +67,12 @@ export default function DoctorQualificationForm()
                                 </Label>
                                 <Input
                                 id="qualId"
-                                name="qualId"
+                                name="id"
                                 placeholder=" Doctor Qualification Id"
-                                type="  text"
+                                type="text"
+                                //4
+                                value={id}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -47,9 +83,11 @@ export default function DoctorQualificationForm()
                                 </Label>
                                 <Input
                                 id="empId"
-                                name="empId"
+                                name="employeeId"
                                 placeholder="Doctor Id as a Employee"
                                 type="  text"
+                                value={employeeId}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -64,6 +102,8 @@ export default function DoctorQualificationForm()
                             name="graduation"
                             placeholder="Enter graduation"
                             type="text"
+                            value={graduation}
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
@@ -74,9 +114,11 @@ export default function DoctorQualificationForm()
                                 </Label>
                                 <Input
                                 id="graduation_complition_year"
-                                name="graduation_complition_year"
+                                name="graduationCompletionYear"
                                 placeholder="Enter Year"
                                 type="text"
+                                value={graduationCompletionYear}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -88,9 +130,11 @@ export default function DoctorQualificationForm()
                             </Label>
                             <Input
                             id="post_grad"
-                            name="post_grad"
+                            name="postGrad"
                             placeholder="Enter Post-graduation"
                             type="text"
+                            value={postGrad}
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
@@ -101,9 +145,11 @@ export default function DoctorQualificationForm()
                                 </Label>
                                 <Input
                                 id="post_grad_complition_year"
-                                name="post_grad_complition_year"
+                                name="postGradCompletionYear"
                                 placeholder="Enter year"
                                 type="text"
+                                value={postGradCompletionYear}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -116,22 +162,26 @@ export default function DoctorQualificationForm()
                             </Label>
                             <Input
                             id="additional_qualification"
-                            name="additional_qualification"
+                            name="additionalQualification"
                             placeholder="Enter Additional Qualification"
                             type="text"
+                            value={additionalQualification}
+                            onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
                         </Col>
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="additional_qualification_complition_year">
-                                Qualification Complition Year
+                                Complition Year
                                 </Label>
                                 <Input
                                 id="additional_qualification_complition_year"
-                                name="additional_qualification_complition_year"
+                                name="additionalQualificationCompletionYear"
                                 placeholder="Enter year"
                                 type="text"
+                                value={additionalQualificationCompletionYear}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -143,9 +193,11 @@ export default function DoctorQualificationForm()
                                 </Label>
                                 <Input
                                 id="medical_registration_no"
-                                name="medical_registration_no"
+                                name="medicalRegistrationNo"
                                 placeholder="Enter Medical Registration No"
                                 type="text"
+                                value={medicalRegistrationNo}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -159,6 +211,8 @@ export default function DoctorQualificationForm()
                                 name="experience"
                                 placeholder="Enter Experiance"
                                 type="number"
+                                value={experience}
+                                onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
@@ -167,15 +221,13 @@ export default function DoctorQualificationForm()
                         
                         <Container>
                             <Button color="dark">
-                                    Register
+                                    Submit
                             </Button>
                             <Button color="dark" className='ms-2' type='reset'>
                                     Clear
                             </Button>
                         </Container>
                     </Form>
-
-
                     
                 </CardBody>
             </Card>

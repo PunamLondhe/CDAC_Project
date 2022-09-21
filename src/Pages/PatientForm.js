@@ -17,6 +17,7 @@ import { Container } from 'react-bootstrap'
 // import { useHistory } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default function PatientForm() 
 {
@@ -29,7 +30,7 @@ export default function PatientForm()
         const [user, setUser] = useState({
 
             //initial values
-            pId:'',
+            id:'',
             pathology_lab_id:'',
             radiology_lab_id:'',
             firstName:'',
@@ -40,7 +41,7 @@ export default function PatientForm()
             address:'',
         });
     
-    const {pId,pathology_lab_id,radiology_lab_id,firstName,lastName,email,mobile,age,address} = user
+    const {id,pathology_lab_id,radiology_lab_id,firstName,lastName,email,mobile,age,address} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -74,53 +75,39 @@ export default function PatientForm()
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
                         
-                        <Col md={4}>
+                        <Col md={6}>
                             <FormGroup>
                                 <Label for="pId">
                                 Patient Id
                                 </Label>
                                 <Input
                                 id="pId"
-                                name="pId"
+                                name="id"
                                 placeholder="Patient Id"
                                 type="text"
 
                                 // 4------------------------
-                                value={pId}  //bcoz of 5..no need to write user.id
+                                value={id}  //bcoz of 5..no need to write user.id
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                             <FormGroup>
-                                <Label for="pathology_lab_id">
-                                Pathology lab Id
+                                <Label for="age">
+                                Age
                                 </Label>
                                 <Input
-                                id="pathology_lab_id"
-                                name="pathology_lab_id"
-                                placeholder="Pathology lab Id"
-                                type="text"
-                                value={pathology_lab_id}
+                                id="age"
+                                name="age"
+                                placeholder="Select Age"
+                                type="number"
+                                value={age}
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={4}>
-                            <FormGroup>
-                                <Label for="radiology_lab_id">
-                                Radiology lab Id
-                                </Label>
-                                <Input
-                                id="radiology_lab_id"
-                                name="radiology_lab_id"
-                                placeholder="Radiology lab Id"
-                                type="text"
-                                value={radiology_lab_id}
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
+                        
                         
                         <Col md={6}>
                         <FormGroup>
@@ -187,7 +174,7 @@ export default function PatientForm()
                         </Col>
 
 
-                        <Col md={6}>
+                        <Col md={12}>
                         <FormGroup>
                             <Label for="address">
                             Address
@@ -202,37 +189,20 @@ export default function PatientForm()
                             />
                         </FormGroup>
                         </Col>
-
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="age">
-                                Age
-                                </Label>
-                                <Input
-                                id="age"
-                                name="age"
-                                placeholder="Select Age"
-                                type="number"
-                                value={age}
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                        
                         </Row>
                         
                         <Container>
                             <Button color="dark">
                                     Submit
                             </Button>
-                            {/* <Button color="dark" className='ms-2' type='reset'>
-                                
-                            </Button> */}
+                            {" "}
+                            {/* <Link className="btn btn-primary" to="/CDAC_Project/PrescriptionForm">
+                            Prescription Details
+                            </Link> */}
+                            
                         </Container>
                     </Form>
 
-
-                    
                 </CardBody>
             </Card>
         </Container>

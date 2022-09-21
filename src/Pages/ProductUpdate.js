@@ -1,15 +1,7 @@
-// product_id int auto_increment,
-// product_name varchar (100),
-// product_manufacturer_name varchar (100),
-// frequency varchar (20),
-// remarks varchar (30),
-// prescription_id int,
-
-
-
 import React from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap'
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
 import { useState } from 'react'
@@ -20,6 +12,10 @@ export default function ProductForm()
     // let history = useHistory();
     const navigate = useNavigate();
 
+    //11
+    const {id} = useParams();
+    // alert(id);
+
     // 3--------------------------------
     const [user, setUser] = useState({
 
@@ -29,7 +25,7 @@ export default function ProductForm()
         productName:'',
         productManufacturerName:'',
     });
-    const {id,prescriptionId,productName,productManufacturerName} = user;
+    const {prescriptionId,productName,productManufacturerName} = user;
 
     // 5-----------------
     const onInputChange = e => {
@@ -38,6 +34,12 @@ export default function ProductForm()
         //6
         setUser({...user, [e.target.name] : e.target.value})
     }
+
+    //12
+    useEffect(() => {
+        loadProduct()
+      },[])
+  
 
     //7
     const onFormSubmit = async (e )=>{
@@ -50,6 +52,17 @@ export default function ProductForm()
         //history.push("/CDAC_Project/PatientList")
         navigate('/CDAC_Project/ProductList')
     }
+
+
+    //10 to load data of specific patient
+    const loadProduct = async () => {
+
+        const result = await axios.get(`http://localhost:8080/products/${id}`)
+        console.log(result)
+  
+        //14
+        setUser(result.data)
+      };
 
   return (
     <div>
@@ -126,35 +139,6 @@ export default function ProductForm()
                                 />
                             </FormGroup>
                         </Col>
-
-
-                        {/* <Col md={4}>
-                        <FormGroup>
-                            <Label for="frequency">
-                            Frequency
-                            </Label>
-                            <Input
-                            id="frequency"
-                            name="frequency"
-                            placeholder="Select Frequency"
-                            type="number"
-                            />
-                        </FormGroup>
-                        </Col>
-                        
-                        <Col md={8}>
-                        <FormGroup>
-                            <Label for="remark">
-                            Remark
-                            </Label>
-                            <Input
-                            id="remark"
-                            name="remark"
-                            placeholder="Enter Remark"
-                            type='textarea'
-                            />
-                        </FormGroup>
-                        </Col> */}
 
                         </Row>
                         

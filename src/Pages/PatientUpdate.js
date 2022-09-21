@@ -59,14 +59,13 @@ export default function PatientUpdate()
     },[])
 
     //7
-    const onFormSubmit = async (e )=>{
+    const onFormSubmit = async (e) =>{
         e.preventDefault();
 
         //to update data 
-        await axios.put(`http://localhost:8080/patients/${id}`,user);
+        await axios.post("http://localhost:8080/patients",user);
 
         // 9 after data is submitted goto PatientList
-        //history.push("/CDAC_Project/PatientList")
         navigate('/CDAC_Project/PatientList')
     };
 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function PatientList()
+export default function DepartmentList()
 {
     //1---------------------------------------------
     const [users, setUser] = useState([]);
@@ -18,7 +18,7 @@ export default function PatientList()
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/patients");
+        const result = await axios.get("http://localhost:8080/depts");
         console.log(result);
         setUser(result.data);
     }
@@ -26,18 +26,18 @@ export default function PatientList()
 
 
     //for patient deletion
-    const deletePatient = async id =>{
+    const deleteUser = async id =>{
 
-        await axios.delete(`http://localhost:8080/patients/${id}`);
+        await axios.delete(`http://localhost:8080/depts/${id}`);
         loadUsers();
     }
 
   return (
         <div>
-        <Container style={{width:1200}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h2>Patients List</h2>
+                    <h2>Departments</h2>
 
                     <Row>
                         <Col md={7}>
@@ -47,7 +47,7 @@ export default function PatientList()
                         <Col md={2}>
                             <center>
                             {/* 2--------------------------------------------------------- */}
-                            <Link className='btn btn-outline-success'to="/CDAC_Project/PatientForm">+ Add Patient</Link>
+                            <Link className='btn btn-outline-success'to="/CDAC_Project/DepartmentForm">+ Add Department</Link>
                             </center>
                         </Col>
                     </Row>
@@ -57,48 +57,32 @@ export default function PatientList()
                     <Table striped>
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Email</th>
-                                <th>Phone No</th>
-                                <th>Address</th>
+                                <th>Department Id</th>
+                                <th>Department Name</th>
+                                <th>Clinic Id</th>
+                                
                                 
                                 <th>Action</th>
-                                {/* <th></th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* // id int auto_increment,
-                            // first_name varchar (50) not null,
-                            // last_name varchar(50),
-                            // age tinyint,
-                            // mobile varchar(10) default 'NA',
-                            // email varchar (100),
-                            // address varchar(300),
-                            // dept_id int, 
-                            // employee_id int, */}
-
+                            
                             {/* 2.display data on form  */}
                             {
                                 users.map((user) =>(
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
                                         <td>{user.id}</td>
-                                        <td>{user.firstName} {" "} {user.lastName}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.mobile}</td>
-                                        <td>{user.address}</td>
-                                        {/* <td>{user.id}</td> */}
-
+                                        <td>{user.deptName}</td>
+                                        <td>{user.clinicId}</td>
+                                    
                                         <td>
-                                            {/* <Link className='btn btn-outline-success'>View</Link>
-                                            {" "} */}
-                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/PatientUpdate/${user.id}`}>
+                                            {/* <Link className='btn btn-outline-success'>View</Link> */}
+                                            {" "}
+                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/DepartmentUpdate/${user.id}`}>
                                                 Update</Link>
                                             {" "}
-                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>Delete</Link>
+                                            <Link className='btn btn-outline-danger' onClick={() => deleteUser(user.id)}>Delete</Link>
                                         </td>
                                     </tr>
                                 ))

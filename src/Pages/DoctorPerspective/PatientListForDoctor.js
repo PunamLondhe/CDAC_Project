@@ -1,3 +1,4 @@
+// PatientListForDoctor
 import React from 'react'
 import axios from 'axios'
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button,Table} from 'reactstrap'
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function PatientList()
+export default function PatientListForDoctor()
 {
     //1---------------------------------------------
     const [users, setUser] = useState([]);
@@ -93,12 +94,14 @@ export default function PatientList()
                                         {/* <td>{user.id}</td> */}
 
                                         <td>
-                                            {/* <Link className='btn btn-outline-success'>View</Link>
-                                            {" "} */}
+                                            <Link className='btn btn-outline-success' to={`/CDAC_Project/PatientViewForDoctor/${user.id}`}>
+                                                View</Link>
+                                            {" "}
                                             <Link className='btn btn-outline-primary' to={`/CDAC_Project/PatientUpdate/${user.id}`}>
                                                 Update</Link>
                                             {" "}
-                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>Delete</Link>
+                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>
+                                                Delete</Link>
                                         </td>
                                     </tr>
                                 ))

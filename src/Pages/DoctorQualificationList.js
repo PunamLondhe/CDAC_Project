@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function PatientList()
+export default function DoctorQualificationList()
 {
     //1---------------------------------------------
     const [users, setUser] = useState([]);
@@ -18,7 +18,7 @@ export default function PatientList()
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/patients");
+        const result = await axios.get("http://localhost:8080/docQualifications");
         console.log(result);
         setUser(result.data);
     }
@@ -26,9 +26,9 @@ export default function PatientList()
 
 
     //for patient deletion
-    const deletePatient = async id =>{
+    const deleteQual = async id =>{
 
-        await axios.delete(`http://localhost:8080/patients/${id}`);
+        await axios.delete(`http://localhost:8080/docQualifications/${id}`);
         loadUsers();
     }
 
@@ -37,7 +37,7 @@ export default function PatientList()
         <Container style={{width:1200}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h2>Patients List</h2>
+                    <h2>Qualification List</h2>
 
                     <Row>
                         <Col md={7}>
@@ -47,7 +47,7 @@ export default function PatientList()
                         <Col md={2}>
                             <center>
                             {/* 2--------------------------------------------------------- */}
-                            <Link className='btn btn-outline-success'to="/CDAC_Project/PatientForm">+ Add Patient</Link>
+                            <Link className='btn btn-outline-success'to="/CDAC_Project/DoctorQualificationForm">+ Add Qualification</Link>
                             </center>
                         </Col>
                     </Row>
@@ -57,48 +57,52 @@ export default function PatientList()
                     <Table striped>
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Email</th>
-                                <th>Phone No</th>
-                                <th>Address</th>
-                                
+                                {/* <th>Id</th> */}
+                                <th>Graduation</th>
+                                <th>Year</th>
+                                <th>Post Graduation</th>
+                                <th>Year</th>                                
+                                <th>Additional Qualification</th>
+                                <th>Year</th>
+                                <th>Registration No</th>
+                                <th>Experiance</th>
                                 <th>Action</th>
                                 {/* <th></th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* // id int auto_increment,
-                            // first_name varchar (50) not null,
-                            // last_name varchar(50),
-                            // age tinyint,
-                            // mobile varchar(10) default 'NA',
-                            // email varchar (100),
-                            // address varchar(300),
-                            // dept_id int, 
-                            // employee_id int, */}
-
+                        {/* id;
+                        private String graduation;
+                        private String graduationCompletionYear;
+                        private String postGrad;
+                        private String postGradCompletionYear;
+                        private Long medicalRegistrationNo;
+                        private String additionalQualification;
+                        private String additionalQualificationCompletionYear;
+                        private short experience;
+                        private Long employeeId; */}
                             {/* 2.display data on form  */}
                             {
                                 users.map((user) =>(
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
-                                        <td>{user.id}</td>
-                                        <td>{user.firstName} {" "} {user.lastName}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.mobile}</td>
-                                        <td>{user.address}</td>
                                         {/* <td>{user.id}</td> */}
-
+                                        <td>{user.graduation}</td>
+                                        <td>{user.graduationCompletionYear}</td>
+                                        <td>{user.postGrad}</td>
+                                        <td>{user.postGradCompletionYear}</td>
+                                        <td>{user.additionalQualification}</td>
+                                        <td>{user.additionalQualificationCompletionYear}</td>
+                                        <td>{user.medicalRegistrationNo}</td>
+                                        <td>{user.experience}</td>
+                    
                                         <td>
                                             {/* <Link className='btn btn-outline-success'>View</Link>
                                             {" "} */}
-                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/PatientUpdate/${user.id}`}>
+                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/DoctorQualificationUpdate/${user.id}`}>
                                                 Update</Link>
                                             {" "}
-                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>Delete</Link>
+                                            <Link className='btn btn-outline-danger' onClick={() => deleteQual(user.id)}>Delete</Link>
                                         </td>
                                     </tr>
                                 ))

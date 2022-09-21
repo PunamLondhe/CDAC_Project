@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Container } from 'react-bootstrap'
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function PrescriptionForm() 
 {
     //8
     const navigate = useNavigate();
+
+    //11
+    const {id} = useParams();
+    // alert(id);
 
     // 3--------------------------------
     const [user, setUser] = useState({
@@ -21,7 +25,7 @@ export default function PrescriptionForm()
         diagnosis:'',
         quantity:''
     })
-    const {id,patientId,prescriptionDate,frequency,duration,remarks,diagnosis,quantity} = user
+    const {patientId,prescriptionDate,frequency,duration,remarks,diagnosis,quantity} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -31,6 +35,11 @@ export default function PrescriptionForm()
         setUser({...user, [e.target.name] : e.target.value})
     }
 
+    //12
+    useEffect(() => {
+        loadPrsc()
+      },[])
+  
     //7
     const onFormSubmit = async (e )=>{
         e.preventDefault();
@@ -42,12 +51,23 @@ export default function PrescriptionForm()
         navigate('/CDAC_Project/PrescriptionList')
     }
 
+    //10 to load data of specific patient
+    const loadPrsc = async () => {
+
+        const result = await axios.get(`http://localhost:8080/prescriptions/${id}`)
+        console.log(result)
+  
+        //14
+        setUser(result.data)
+      };
+
   return (
     <div>
         <Container style={{width:600}} className="mt-20">
             <Card>
                 <CardHeader>
-                    <h3>Prescription Form</h3>
+                    <h3>Prescription Details</h3>
+                    <h6 style={{color:'green'}}>Enter details for Updation</h6>
                 </CardHeader>
 
                 <CardBody>

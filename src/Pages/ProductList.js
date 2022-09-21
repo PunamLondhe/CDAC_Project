@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function PatientList()
+export default function ProductList()
 {
     //1---------------------------------------------
     const [users, setUser] = useState([]);
@@ -18,7 +18,7 @@ export default function PatientList()
     }, [])
 
     const loadUsers = async () => {
-        const result = await axios.get("http://localhost:8080/patients");
+        const result = await axios.get("http://localhost:8080/products");
         console.log(result);
         setUser(result.data);
     }
@@ -26,18 +26,18 @@ export default function PatientList()
 
 
     //for patient deletion
-    const deletePatient = async id =>{
+    const deleteProduct = async id =>{
 
-        await axios.delete(`http://localhost:8080/patients/${id}`);
+        await axios.delete(`http://localhost:8080/products/${id}`);
         loadUsers();
     }
 
   return (
         <div>
-        <Container style={{width:1200}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
-                    <h2>Patients List</h2>
+                    <h2>Product List</h2>
 
                     <Row>
                         <Col md={7}>
@@ -47,7 +47,7 @@ export default function PatientList()
                         <Col md={2}>
                             <center>
                             {/* 2--------------------------------------------------------- */}
-                            <Link className='btn btn-outline-success'to="/CDAC_Project/PatientForm">+ Add Patient</Link>
+                            <Link className='btn btn-outline-success'to="/CDAC_Project/ProductForm">+ Add Product</Link>
                             </center>
                         </Col>
                     </Row>
@@ -56,28 +56,28 @@ export default function PatientList()
                 <CardBody>
                     <Table striped>
                         <thead>
+                        {/* // product_id int auto_increment,
+                        // product_name varchar (100),
+                        // product_manufacturer_name varchar (100),
+                        // frequency varchar (20),
+                        // remarks varchar (30),
+                        // prescription_id int, */}
+
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Email</th>
-                                <th>Phone No</th>
-                                <th>Address</th>
+                                <th>Product Name</th>
+                                <th>Manufacture Name</th>
+                                <th>Prescription Id</th>
                                 
                                 <th>Action</th>
                                 {/* <th></th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* // id int auto_increment,
-                            // first_name varchar (50) not null,
-                            // last_name varchar(50),
-                            // age tinyint,
-                            // mobile varchar(10) default 'NA',
-                            // email varchar (100),
-                            // address varchar(300),
-                            // dept_id int, 
-                            // employee_id int, */}
+                            {/* private Long id;
+                                private String productName;
+                                private String productManufacturerName;
+                                private Long prescriptionId; */}
 
                             {/* 2.display data on form  */}
                             {
@@ -85,20 +85,17 @@ export default function PatientList()
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
                                         <td>{user.id}</td>
-                                        <td>{user.firstName} {" "} {user.lastName}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.mobile}</td>
-                                        <td>{user.address}</td>
-                                        {/* <td>{user.id}</td> */}
-
+                                        <td>{user.productName}</td>
+                                        <td>{user.productManufacturerName}</td>
+                                        <td>{user.prescriptionId}</td>
+                                        
                                         <td>
                                             {/* <Link className='btn btn-outline-success'>View</Link>
                                             {" "} */}
-                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/PatientUpdate/${user.id}`}>
+                                            <Link className='btn btn-outline-primary' to={`/CDAC_Project/ProductUpdate/${user.id}`}>
                                                 Update</Link>
                                             {" "}
-                                            <Link className='btn btn-outline-danger' onClick={() => deletePatient(user.id)}>Delete</Link>
+                                            <Link className='btn btn-outline-danger' onClick={() => deleteProduct(user.id)}>Delete</Link>
                                         </td>
                                     </tr>
                                 ))
