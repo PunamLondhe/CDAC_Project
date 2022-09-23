@@ -37,12 +37,13 @@ export default function PatientUpdate()
             firstName:'',
             lastName:'',
             email:'',
+            password:'',
             mobile:'',
             age:'',
             address:'',
         });
     
-    const {pId,pathology_lab_id,radiology_lab_id,firstName,lastName,email,mobile,age,address} = user
+    const {pId,pathology_lab_id,radiology_lab_id,firstName,lastName,email,password,mobile,age,address} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -92,41 +93,6 @@ export default function PatientUpdate()
                 <CardBody>
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
-                        
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="pId">
-                                Patient Id
-                                </Label>
-                                <Input
-                                id="pId"
-                                name="pId"
-                                placeholder="Patient Id"
-                                type="text"
-
-                                // 4------------------------value must be same as class field
-                                value={id}  //bcoz of 5..no need to write user.id
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="age">
-                                Age
-                                </Label>
-                                <Input
-                                id="age"
-                                name="age"
-                                placeholder="Select Age"
-                                type="number"
-                                value={age}
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                       
-                        
                         <Col md={6}>
                         <FormGroup>
                             <Label for="firstName">
@@ -177,6 +143,23 @@ export default function PatientUpdate()
 
                         <Col md={6}>
                         <FormGroup>
+                            <Label for="password">
+                            Password
+                            </Label>
+                            <Input
+                            id="password"
+                            name="password"
+                            placeholder="Enter password "
+                            type="password"
+                            value={password}
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+
+                        <Col md={6}>
+                        <FormGroup>
                             <Label for="mobile">
                             Mobile No.
                             </Label>
@@ -191,6 +174,21 @@ export default function PatientUpdate()
                         </FormGroup>
                         </Col>
 
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="age">
+                                Age
+                                </Label>
+                                <Input
+                                id="age"
+                                name="age"
+                                placeholder="Select Age"
+                                type="number"
+                                value={age}
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
 
                         <Col md={12}>
                         <FormGroup>
@@ -207,9 +205,6 @@ export default function PatientUpdate()
                             />
                         </FormGroup>
                         </Col>
-
-                        
-                        
                         </Row>
                         
                         <Container>

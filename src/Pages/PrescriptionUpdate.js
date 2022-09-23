@@ -63,7 +63,7 @@ export default function PrescriptionForm()
 
   return (
     <div>
-        <Container style={{width:600}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
             <Card>
                 <CardHeader>
                     <h3>Prescription Details</h3>
@@ -73,21 +73,6 @@ export default function PrescriptionForm()
                 <CardBody>
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="prescription_id">
-                                Prescription Id
-                                </Label>
-                                <Input
-                                id="prescription_id"
-                                name="id"
-                                placeholder="Prescription Id"
-                                type="text"
-                                value={id}  
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="pId">
@@ -103,8 +88,23 @@ export default function PrescriptionForm()
                                 />
                             </FormGroup>
                         </Col>
-
                         <Col md={6}>
+                            <FormGroup>
+                                <Label for="prescription_date">
+                                Date
+                                </Label>
+                                <Input
+                                id="prescription_date"
+                                name="prescriptionDate"
+                                placeholder="Select Date"
+                                type="date"
+                                value={prescriptionDate}  
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
+
+                        <Col md={12}>
                             <FormGroup>
                                 <Label for="diagnosis">
                                 Diagnosis
@@ -113,23 +113,8 @@ export default function PrescriptionForm()
                                 id="diagnosis"
                                 name="diagnosis"
                                 placeholder="Enter diagnosis"
-                                type="text"
+                                type="textarea"
                                 value={diagnosis}  
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="prescription_date">
-                                Prescription Date
-                                </Label>
-                                <Input
-                                id="prescription_date"
-                                name="prescriptionDate"
-                                placeholder="Select Date"
-                                type="date"
-                                value={prescriptionDate}  
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
@@ -198,7 +183,6 @@ export default function PrescriptionForm()
                             />
                         </FormGroup>
                         </Col>
-
                         </Row>
                         
                         <Container>

@@ -71,10 +71,11 @@ const ClinicList = () => {
                                 <th>Id</th>
                                 <th>Clinic Name</th>
                                 <th>Address</th>
+                                <th>Email</th>
                                 <th>Phone No</th>
-                                <th>Morning Time</th>
-                                <th>Afternoon Time</th>
-                                <th>Evening Time</th>
+                                <th>Morning </th>
+                                <th>Afternoon </th>
+                                <th>Evening </th>
                                 <th>Registration Date</th>
                                 <th><center>Action</center></th>
                             </tr>
@@ -93,6 +94,7 @@ const ClinicList = () => {
                                         <td>{item.id}</td>
                                         <td>{item.clinicName}</td>
                                         <td>{item.clinicAddress}</td>
+                                        <td>{item.email}</td>
                                         <td>{item.clinicPhone}</td>
                                         <td>{item.morningTime}</td>
                                         <td>{item.afternoonTime}</td>

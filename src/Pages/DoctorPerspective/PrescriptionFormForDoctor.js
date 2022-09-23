@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap'
 import { Card, CardBody, CardHeader, Form, FormGroup,Row,Col,Label,Input,Button} from 'reactstrap'
 import { useNavigate } from 'react-router-dom';
+import { Modal, ModalHeader } from 'reactstrap';
 
-export default function PrescriptionForm() 
+export default function PrescriptionFormForDoctor() 
 {
     //8
     const navigate = useNavigate();
@@ -39,13 +40,15 @@ export default function PrescriptionForm()
         await axios.post("http://localhost:8080/prescriptions",user);
 
         // 9 after data is submitted goto List
-        navigate('/CDAC_Project/PrescriptionList')
-        // navigate('/CDAC_Project/PatientViewForDoctor/${patientId}')
+        // navigate('/CDAC_Project/PatientViewForDoctor/${id}')
     }
+
+    // -------------------------------Model------------------
+    const [modal,setModal] = useState(false)
 
   return (
     <div>
-        <Container style={{width:800}} className="mt-20">
+        <Container style={{width:600}} className="mt-20">
             <Card>
                 <CardHeader>
                     <h3>Prescription Form</h3>
@@ -54,7 +57,7 @@ export default function PrescriptionForm()
                 <CardBody>
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
-                        {/* <Col md={6}>
+                        <Col md={6}>
                             <FormGroup>
                                 <Label for="prescription_id">
                                 Prescription Id
@@ -68,7 +71,7 @@ export default function PrescriptionForm()
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
-                        </Col> */}
+                        </Col>
                         <Col md={6}>
                             <FormGroup>
                                 <Label for="pId">
@@ -84,23 +87,8 @@ export default function PrescriptionForm()
                                 />
                             </FormGroup>
                         </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="prescription_date">
-                                Date
-                                </Label>
-                                <Input
-                                id="prescription_date"
-                                name="prescriptionDate"
-                                placeholder="Select Date"
-                                type="date"
-                                value={prescriptionDate}  
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
 
-                        <Col md={12}>
+                        <Col md={6}>
                             <FormGroup>
                                 <Label for="diagnosis">
                                 Diagnosis
@@ -109,8 +97,23 @@ export default function PrescriptionForm()
                                 id="diagnosis"
                                 name="diagnosis"
                                 placeholder="Enter diagnosis"
-                                type="textarea"
+                                type="text"
                                 value={diagnosis}  
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="prescription_date">
+                                Prescription Date
+                                </Label>
+                                <Input
+                                id="prescription_date"
+                                name="prescriptionDate"
+                                placeholder="Select Date"
+                                type="date"
+                                value={prescriptionDate}  
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
@@ -186,6 +189,11 @@ export default function PrescriptionForm()
                             <Button color="dark">
                                     Submit
                             </Button>
+
+                            <Button color="success" className='mt-2' onClick={ () => setModal(true)}>
+                            + Prescription
+                            </Button>
+
                             <Button color="dark" className='ms-2' type='reset'>
                                     Clear
                             </Button>

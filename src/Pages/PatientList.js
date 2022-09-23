@@ -57,7 +57,7 @@ export default function PatientList()
                     <Table striped>
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                {/* <th>Id</th> */}
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Email</th>
@@ -84,7 +84,7 @@ export default function PatientList()
                                 users.map((user) =>(
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
-                                        <td>{user.id}</td>
+                                        {/* <td>{user.id}</td> */}
                                         <td>{user.firstName} {" "} {user.lastName}</td>
                                         <td>{user.age}</td>
                                         <td>{user.email}</td>

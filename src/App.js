@@ -46,6 +46,8 @@ import DeptList from './Pages/ClinicPerspective/DeptList';
 //Doctor Perspective
 import PatientListForDoctor from './Pages/DoctorPerspective/PatientListForDoctor';
 import PatientViewForDoctor from './Pages/DoctorPerspective/PatientViewForDoctor';
+import PrescriptionFormForDoctor from './Pages/DoctorPerspective/PrescriptionFormForDoctor';
+import PatientPrescription from './Pages/DoctorPerspective/PatientPrescription';
 
 //for messaging
 import { ToastContainer, toast } from 'react-toastify';
@@ -55,7 +57,8 @@ import 'react-toastify/dist/ReactToastify.css';
 //for routing
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+function App() 
+{
   return (
     <BrowserRouter>
       <NavBar/>
@@ -75,7 +78,7 @@ function App() {
         <Route path="/CDAC_Project/PatientList" element={<PatientList />}/>
         <Route path="/CDAC_Project/PatientUpdate/:id" element={<PatientUpdate />}/>
 
-        PrescriptionUpdate
+        
         <Route path="/CDAC_Project/PrescriptionForm" element={<PrescriptionForm />}/>
         <Route path="/CDAC_Project/PrescriptionList" element={<PrescriptionList />}/>
         <Route path="/CDAC_Project/PrescriptionView/:id" element={<PrescriptionView />}/>
@@ -98,6 +101,8 @@ function App() {
         {/* Docter Perspective  */}
         <Route path="/CDAC_Project/PatientListForDoctor" element={<PatientListForDoctor />}/>
         <Route path="/CDAC_Project/PatientViewForDoctor/:id" element={<PatientViewForDoctor />}/>
+        <Route path="/CDAC_Project/PrescriptionFormForDoctor/:id" element={<PrescriptionFormForDoctor />}/>
+        <Route path="/CDAC_Project/PatientPrescription/:id" element={<PatientPrescription />}/>
 
 
         {/* ClinicPerspective */}

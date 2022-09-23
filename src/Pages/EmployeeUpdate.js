@@ -26,18 +26,19 @@ export default function EmployeeUpdate()
             empFirstName:'',
             empLastName:'',
             email:'',
+            password:'',
             mobile:'',
             gender:'',
             address:'',
             deptId:'',
             dob:'',
-            hdate:'',
+            hiringDate:'',
             designation:'',
             salary:'',
 
         });
     
-    const {empFirstName,empLastName,email,mobile,gender,address,deptId,dob,hdate,designation,salary} = user
+    const {empFirstName,empLastName,email,password,mobile,gender,address,deptId,dob,hiringDate,designation,salary} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -86,42 +87,6 @@ export default function EmployeeUpdate()
                 <CardBody>
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="empId">
-                                Employee Id
-                                </Label>
-                                <Input
-                                id="empId"
-                                name="id"
-                                placeholder="Employee Id"
-                                type="text"
-
-                                // 4------------------------
-                                value={id}  //bcoz of 5..no need to write user.id
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="deptId">
-                                Department Id
-                                </Label>
-                                <Input
-                                id="deptId"
-                                name="deptId"
-                                placeholder="Department Id"
-                                type="text"
-
-                                // 4------------------------
-                                value={deptId}  //bcoz of 5..no need to write user.id
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
-                    
-
                         <Col md={6}>
                         <FormGroup>
                             <Label for="firstName">
@@ -172,6 +137,22 @@ export default function EmployeeUpdate()
 
                         <Col md={6}>
                         <FormGroup>
+                            <Label for="password">
+                            Password
+                            </Label>
+                            <Input
+                            id="password"
+                            name="password"
+                            placeholder="Enter password "
+                            type="password"
+                            value={password}
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={6}>
+                        <FormGroup>
                             <Label for="mobile">
                             Mobile No.
                             </Label>
@@ -201,6 +182,27 @@ export default function EmployeeUpdate()
                             />
                         </FormGroup>
                         </Col>
+                        
+
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="deptId">
+                                Department Id
+                                </Label>
+                                <Input
+                                id="deptId"
+                                name="deptId"
+                                placeholder="Department Id"
+                                type="text"
+
+                                // 4------------------------
+                                value={deptId}  //bcoz of 5..no need to write user.id
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
+
+
                         <Col md={6}>
                         <FormGroup>
                             <Label for="salary">
@@ -241,12 +243,12 @@ export default function EmployeeUpdate()
                                 </Label>
                                 <Input
                                 id="hdate"
-                                name="hdate"
+                                name="hiringDate"
                                 placeholder="Hire Date"
                                 type="date"
 
                                 // 4------------------------
-                                value={hdate}  //bcoz of 5..no need to write user.id
+                                value={hiringDate}  //bcoz of 5..no need to write user.id
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>

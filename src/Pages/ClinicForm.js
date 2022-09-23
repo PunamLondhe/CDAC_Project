@@ -16,6 +16,8 @@ export default function ClinicForm()
         
         id:'',
         clinicName:'',
+        email:'',
+        password:'',
         morningTime:'',
         afternoonTime:'',
         clinicAddress:'',
@@ -23,7 +25,7 @@ export default function ClinicForm()
         clinicPhone:'',
         registrationDate:''
     })
-    const {id,clinicName,morningTime,afternoonTime,clinicAddress,eveningTime,clinicPhone,registrationDate} = user
+    const {id,clinicName,email,password,morningTime,afternoonTime,clinicAddress,eveningTime,clinicPhone,registrationDate} = user
 
 
     // 5-----------------
@@ -48,7 +50,7 @@ export default function ClinicForm()
     
   return (
     <div>
-        <Container style={{width:600}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
 
             {/* print data on form  */}
             {/* {JSON.stringify(data)} */}
@@ -62,19 +64,19 @@ export default function ClinicForm()
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row>
                         <Col md={8}>
-                            <FormGroup>
-                                <Label for="clinicId">
-                                Clinic Id
-                                </Label>
-                                <Input
-                                id="clinicId"
-                                name="id"
-                                placeholder="Clinic Id"
-                                type="text"
-                                value={id}  //bcoz of 5..no need to write user.id
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
+                        <FormGroup>
+                            <Label for="clinicName">
+                            Clinic Name
+                            </Label>
+                            <Input
+                            id="clinicName"
+                            name="clinicName"
+                            placeholder="Enter Clinic name"
+                            type="text"
+                            value={clinicName}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
                         </Col>
                         <Col md={4}>
                             <FormGroup>
@@ -92,22 +94,22 @@ export default function ClinicForm()
                             </FormGroup>
                         </Col>
                         
+                        
                         <Col md={8}>
-                        <FormGroup>
-                            <Label for="clinicName">
-                            Clinic Name
-                            </Label>
-                            <Input
-                            id="clinicName"
-                            name="clinicName"
-                            placeholder="Enter Clinic name"
-                            type="text"
-                            value={clinicName}  
-                            onChange={e => onInputChange(e)}
-                            />
-                        </FormGroup>
+                            <FormGroup>
+                                <Label for="email">
+                                Email Id
+                                </Label>
+                                <Input
+                                id="email"
+                                name="email"
+                                placeholder="Email Id"
+                                type="email"
+                                value={email}  //bcoz of 5..no need to write user.id
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
                         </Col>
-
                         <Col md={4}>
                             <FormGroup>
                                 <Label for="clinicATime">
@@ -126,15 +128,15 @@ export default function ClinicForm()
 
                         <Col md={8}>
                         <FormGroup>
-                            <Label for="clinicAddress">
-                            Address
+                            <Label for="password">
+                            Password
                             </Label>
                             <Input
-                            id="clinicAddress"
-                            name="clinicAddress"
-                            placeholder="Enter Address"
-                            type='textarea'
-                            value={clinicAddress}  
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            type='password'
+                            value={password}  
                             onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
@@ -187,6 +189,23 @@ export default function ClinicForm()
                                 />
                             </FormGroup>
                         </Col>
+
+                        <Col md={12}>
+                        <FormGroup>
+                            <Label for="clinicAddress">
+                            Address
+                            </Label>
+                            <Input
+                            id="clinicAddress"
+                            name="clinicAddress"
+                            placeholder="Enter Address"
+                            type='textarea'
+                            value={clinicAddress}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
                         </Row>
                         
                         <Container>

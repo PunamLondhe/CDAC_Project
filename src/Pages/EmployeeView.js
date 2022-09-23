@@ -14,12 +14,13 @@ export default function EmployeeView()
         firstName:'',
         lastName:'',
         email:'',
+        password:'',
         mobile:'',
         gender:'',
         address:'',
         deptId:'',
         dob:'',
-        hdate:'',
+        hiringDate:'',
         designation:'',
         salary:'',
 
@@ -50,11 +51,12 @@ export default function EmployeeView()
             <li className='list-group-item'>Department Id : {user.deptId}</li>
             <li className='list-group-item'>Name : {user.empFirstName} {" "} {user.empLastName}</li>
             <li className='list-group-item'>Email : {user.email}</li>
+            <li className='list-group-item'>Password : {user.password}</li>
             <li className='list-group-item'>Mobile : {user.mobile}</li>
             <li className='list-group-item'>Gender : {user.gender}</li>
             <li className='list-group-item'>Address : {user.address}</li>
             <li className='list-group-item'>Birth Date : {user.dob}</li>
-            <li className='list-group-item'>Hire Date : {user.hdate}</li>
+            <li className='list-group-item'>Hire Date : {user.hiringDate}</li>
             <li className='list-group-item'>Designation : {user.designation}</li>
             <li className='list-group-item'>Salary : {user.salary}</li>
         </ul>
@@ -65,3 +67,4 @@ export default function EmployeeView()
     </div>
   )
 }
+

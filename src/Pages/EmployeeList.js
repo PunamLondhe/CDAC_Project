@@ -57,7 +57,7 @@ export default function EmployeeList()
                     <Table striped>
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                {/* <th>Id</th> */}
                                 <th>Name</th>
                                 <th>Phone No</th>
                                 <th>Email</th>
@@ -87,7 +87,7 @@ export default function EmployeeList()
                                 users.map((user) =>(
                                     <tr> 
                                         {/* <th scope="row">{index + 1}</th> */}
-                                        <td>{user.id}</td>
+                                        {/* <td>{user.id}</td> */}
                                         <td>{user.empFirstName}{" "}{user.empLastName}</td>
                                         {/* <td>{user.empLastName}</td> */}
                                         <td>{user.mobile}</td>
