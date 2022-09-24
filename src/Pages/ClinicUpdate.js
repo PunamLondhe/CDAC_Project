@@ -27,9 +27,11 @@ export default function ClinicUpdate()
         clinicAddress:'',
         eveningTime:'',
         clinicPhone:'',
-        registrationDate:''
+        registrationDate:'',
+        image:''
     })
-    const {clinicId,clinicName,email,password,morningTime,afternoonTime,clinicAddress,eveningTime,clinicPhone,registrationDate} = user
+    const {clinicId,clinicName,email,password,morningTime,afternoonTime,clinicAddress,eveningTime,image,
+        clinicPhone,registrationDate} = user
 
 
     // 5-----------------
@@ -211,7 +213,7 @@ export default function ClinicUpdate()
                             </FormGroup>
                         </Col>
 
-                        <Col md={12}>
+                        <Col md={8}>
                         <FormGroup>
                             <Label for="clinicAddress">
                             Address
@@ -226,6 +228,23 @@ export default function ClinicUpdate()
                             />
                         </FormGroup>
                         </Col>
+                        
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="image">
+                            Image
+                            </Label>
+                            <Input
+                            id="image"
+                            name="image"
+                            placeholder="Image"
+                            type='image'
+                            value={image}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
                         </Row>
                         
                         <Container>

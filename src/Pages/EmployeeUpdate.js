@@ -35,10 +35,11 @@ export default function EmployeeUpdate()
             hiringDate:'',
             designation:'',
             salary:'',
-
+            image:'',
         });
     
-    const {empFirstName,empLastName,email,password,mobile,gender,address,deptId,dob,hiringDate,designation,salary} = user
+    const {empFirstName,empLastName,email,password,mobile,gender,address,deptId,dob,hiringDate,
+        designation,salary,image} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -77,7 +78,7 @@ export default function EmployeeUpdate()
 
   return (
     <div>
-        <Container style={{width:700}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
             <Card>
                 <CardHeader>
                     <h3>Employee Details</h3>
@@ -255,7 +256,7 @@ export default function EmployeeUpdate()
                         </Col>
                         <Col md={4}>
                             <FormGroup>
-                                <Label for="hdate">
+                                <Label for="gender">
                                 Gender
                                 </Label>
                                 <br></br>
@@ -268,7 +269,7 @@ export default function EmployeeUpdate()
                         </Col>
 
 
-                        <Col md={12}>
+                        <Col md={8}>
                         <FormGroup>
                             <Label for="address">
                             Address
@@ -279,6 +280,22 @@ export default function EmployeeUpdate()
                             placeholder="Enter Address"
                             type='textarea'
                             value={address}
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="image">
+                            Image
+                            </Label>
+                            <Input
+                            id="image"
+                            name="image"
+                            placeholder="Image"
+                            type='image'
+                            value={image}
                             onChange={e => onInputChange(e)}
                             />
                         </FormGroup>

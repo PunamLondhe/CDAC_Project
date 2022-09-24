@@ -79,10 +79,12 @@ const PrescriptionList = () => {
                                 <th>Patient Id</th>
                                 <th>Diagnosis</th>
                                 <th>Date</th>
-                                <th>Quantity</th>
+                                <th>Weight</th>
+                                <th>Blood Presure</th>
+                                {/* <th>Quantity</th>
                                 <th>Duration</th>
                                 <th>Frequency</th>
-                                <th>Remarks</th>
+                                <th>Remarks</th> */}
                                 <th><center>Action</center></th>
                             </tr>
                         </thead>
@@ -93,11 +95,13 @@ const PrescriptionList = () => {
                                         {/* <td>{item.id}</td> */}
                                         <td>{item.patientId}</td>
                                         <td>{item.diagnosis}</td>
-                                        <td>{item.prescriptionDate}</td>                              
-                                        <td>{item.quantity}</td>
+                                        <td>{item.prescriptionDate}</td>     
+                                        <td>{item.weight}</td>
+                                        <td>{item.bp}</td>                         
+                                        {/* <td>{item.quantity}</td>
                                         <td>{item.duration}</td>
                                         <td>{item.frequency}</td>
-                                        <td>{item.remarks}</td>
+                                        <td>{item.remarks}</td> */}
                                         
                                         <td>
                                             <Link className='btn btn-outline-success' to={`/CDAC_Project/PrescriptionView/${item.id}`}>

@@ -41,9 +41,11 @@ export default function PatientUpdate()
             mobile:'',
             age:'',
             address:'',
+            gender:'',
+            image:''
         });
     
-    const {pId,pathology_lab_id,radiology_lab_id,firstName,lastName,email,password,mobile,age,address} = user
+    const {firstName,lastName,email,password,mobile,age,address,gender,image} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -83,7 +85,7 @@ export default function PatientUpdate()
 
   return (
     <div>
-        <Container style={{width:700}} className="mt-20">
+        <Container style={{width:800}} className="mt-20">
             <Card>
                 <CardHeader>
                     <h3>Patient Details</h3>
@@ -141,7 +143,7 @@ export default function PatientUpdate()
                         </FormGroup>
                         </Col>
 
-                        <Col md={6}>
+                        {/* <Col md={6}>
                         <FormGroup>
                             <Label for="password">
                             Password
@@ -155,7 +157,7 @@ export default function PatientUpdate()
                             onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
-                        </Col>
+                        </Col> */}
 
 
                         <Col md={6}>
@@ -174,21 +176,6 @@ export default function PatientUpdate()
                         </FormGroup>
                         </Col>
 
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="age">
-                                Age
-                                </Label>
-                                <Input
-                                id="age"
-                                name="age"
-                                placeholder="Select Age"
-                                type="number"
-                                value={age}
-                                onChange={e => onInputChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
 
                         <Col md={12}>
                         <FormGroup>
@@ -205,6 +192,55 @@ export default function PatientUpdate()
                             />
                         </FormGroup>
                         </Col>
+
+                        <Col md={4}>
+                            <FormGroup>
+                                <Label for="age">
+                                Age
+                                </Label>
+                                <Input
+                                id="age"
+                                name="age"
+                                placeholder="Select Age"
+                                type="number"
+                                value={age}
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
+                        
+                        <Col md={4}>
+                            <FormGroup>
+                                <Label for="gender">
+                                Gender
+                                </Label>
+                                <br></br>
+                                <select>
+                                    <option selected>Select gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </FormGroup>
+                        </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="image">
+                            Image
+                            </Label>
+                            <Input
+                            id="image"
+                            name="image"
+                            placeholder="Image"
+                            type='image'
+                            value={image}
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+                        
+
                         </Row>
                         
                         <Container>

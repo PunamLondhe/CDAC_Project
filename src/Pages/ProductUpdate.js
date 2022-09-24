@@ -24,8 +24,12 @@ export default function ProductForm()
         prescriptionId:'',
         productName:'',
         productManufacturerName:'',
+        frequency:'',
+        duration:'',
+        remarks:'',
+        quantity:''
     });
-    const {prescriptionId,productName,productManufacturerName} = user;
+    const {prescriptionId,productName,productManufacturerName,frequency,duration,remarks,quantity} = user;
 
     // 5-----------------
     const onInputChange = e => {
@@ -66,7 +70,7 @@ export default function ProductForm()
 
   return (
     <div>
-        <Container style={{width:600}} >
+        <Container style={{width:800}} >
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
                     <h3>Product Form</h3>
@@ -75,7 +79,7 @@ export default function ProductForm()
                 <CardBody>
                     <Form onSubmit={e => onFormSubmit(e)}>
                         <Row className='mt-10'>
-                        <Col md={6}>
+                        {/* <Col md={6}>
                             <FormGroup>
                                 <Label for="productId">
                                 Product Id
@@ -91,8 +95,8 @@ export default function ProductForm()
                                 onChange={e => onInputChange(e)}
                                 />
                             </FormGroup>
-                        </Col>
-                        <Col md={6}>
+                        </Col> */}
+                        <Col md={12}>
                             <FormGroup>
                                 <Label for="prescription_id">
                                 Prescription Id
@@ -139,6 +143,71 @@ export default function ProductForm()
                                 />
                             </FormGroup>
                         </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="quantity">
+                            Quantity
+                            </Label>
+                            <Input
+                            id="quantity"
+                            name="quantity"
+                            placeholder="Select Quantity"
+                            type="number"
+                            value={quantity}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="duration">
+                            Duration
+                            </Label>
+                            <Input
+                            id="duration"
+                            name="duration"
+                            placeholder="Select Duration"
+                            type="number"
+                            value={duration}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="frequency">
+                            Frequency
+                            </Label>
+                            <Input
+                            id="frequency"
+                            name="frequency"
+                            placeholder="Select Frequency"
+                            type="text"
+                            value={frequency}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={12}>
+                        <FormGroup>
+                            <Label for="remark">
+                            Remark
+                            </Label>
+                            <Input
+                            id="remark"
+                            name="remarks"
+                            placeholder="Enter Remark"
+                            type='textarea'
+                            value={remarks}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
 
                         </Row>
                         

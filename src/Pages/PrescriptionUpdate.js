@@ -23,9 +23,11 @@ export default function PrescriptionForm()
         duration:'',
         remarks:'',
         diagnosis:'',
-        quantity:''
+        quantity:'',
+        weight:'',
+        bp:''
     })
-    const {patientId,prescriptionDate,frequency,duration,remarks,diagnosis,quantity} = user
+    const {patientId,prescriptionDate,frequency,duration,remarks,diagnosis,quantity,weight,bp} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -119,8 +121,38 @@ export default function PrescriptionForm()
                                 />
                             </FormGroup>
                         </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="weight">
+                                Weight
+                                </Label>
+                                <Input
+                                id="weight"
+                                name="weight"
+                                placeholder="Enter weight"
+                                type="number"
+                                value={weight}  
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col md={6}>
+                            <FormGroup>
+                                <Label for="bp">
+                                Blood Presure
+                                </Label>
+                                <Input
+                                id="bp"
+                                name="bp"
+                                placeholder="Enter bp"
+                                type="number"
+                                value={bp}  
+                                onChange={e => onInputChange(e)}
+                                />
+                            </FormGroup>
+                        </Col>
 
-                        <Col md={4}>
+                        {/* <Col md={4}>
                         <FormGroup>
                             <Label for="quantity">
                             Quantity
@@ -182,7 +214,7 @@ export default function PrescriptionForm()
                             onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
-                        </Col>
+                        </Col> */}
                         </Row>
                         
                         <Container>

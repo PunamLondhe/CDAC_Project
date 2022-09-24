@@ -30,10 +30,11 @@ export default function EmployeeForm()
             hiringDate:'',
             designation:'',
             salary:'',
-
+            image:''
         });
     
-    const {id,empFirstName,empLastName,email,password,mobile,gender,address,deptId,dob,hiringDate,designation,salary} = user
+    const {id,empFirstName,empLastName,email,password,mobile,gender,address,deptId,dob,hiringDate,
+        designation,salary,image} = user
 
     // 5-----------------
     const onInputChange = e => {
@@ -248,7 +249,7 @@ export default function EmployeeForm()
                         </Col>
                         <Col md={4}>
                             <FormGroup>
-                                <Label for="hdate">
+                                <Label for="gender">
                                 Gender
                                 </Label>
                                 <br></br>
@@ -261,7 +262,7 @@ export default function EmployeeForm()
                         </Col>
 
 
-                        <Col md={12}>
+                        <Col md={8}>
                         <FormGroup>
                             <Label for="address">
                             Address
@@ -276,6 +277,23 @@ export default function EmployeeForm()
                             />
                         </FormGroup>
                         </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="image">
+                            Image
+                            </Label>
+                            <Input
+                            id="image"
+                            name="image"
+                            placeholder="Image"
+                            type='image'
+                            value={image}
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
                         </Row>
                         
                         <Container>

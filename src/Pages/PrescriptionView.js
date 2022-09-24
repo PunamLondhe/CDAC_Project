@@ -17,8 +17,9 @@ export default function EmployeeView()
         duration:'',
         remarks:'',
         diagnosis:'',
-        quantity:''
-
+        quantity:'',
+        weight:'',
+        bp:''
     });
 
 
@@ -46,10 +47,13 @@ export default function EmployeeView()
             <li className='list-group-item'>Patient Id : {user.patientId}</li>
             <li className='list-group-item'>Diagnosis : {user.diagnosis}</li>
             <li className='list-group-item'>Prescription Date : {user.prescriptionDate}</li>
-            <li className='list-group-item'>Frequency : {user.frequency}</li>
+            <li className='list-group-item'>Weight : {user.weight}</li>
+            <li className='list-group-item'>Blood Presure : {user.bp}</li>
+
+            {/* <li className='list-group-item'>Frequency : {user.frequency}</li>
             <li className='list-group-item'>Duration : {user.duration}</li>
             <li className='list-group-item'>Remark : {user.remarks}</li>
-            <li className='list-group-item'>Quantity : {user.quantity}</li>
+            <li className='list-group-item'>Quantity : {user.quantity}</li> */}
         </ul>
         <hr></hr>
         <Link className="btn btn-primary" to="/CDAC_Project/PrescriptionList">

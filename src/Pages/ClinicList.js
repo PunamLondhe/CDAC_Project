@@ -13,7 +13,7 @@ const ClinicList = () => {
 
     
     //1
-    const[users, setUser] = useState([]);
+    const[users, setUsers] = useState([]);
 
     //2
     useEffect(() => {
@@ -24,7 +24,7 @@ const ClinicList = () => {
     const loadUser = async () => {
          const result = await axios.get("http://localhost:8080/clinics");
          console.log(result);
-         setUser(result.data);
+         setUsers(result.data);
     }
 
 
@@ -68,6 +68,17 @@ const ClinicList = () => {
                     <Table striped>
                         <thead>
                             <tr>
+                                    {/* private String clinicName;
+                                    private String clinicEmail;
+                                    private String clinicAddress;
+                                    private String clinicPhone;
+                                    private String morningTime;
+                                    private String afternoonTime;
+                                    private String eveningTime;
+                                    private Blob image;
+                                    private String registrationDate;
+                                    private String userUsername; */}
+
                                 <th>Id</th>
                                 <th>Clinic Name</th>
                                 <th>Address</th>

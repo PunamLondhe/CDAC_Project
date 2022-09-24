@@ -23,9 +23,11 @@ export default function ClinicForm()
         clinicAddress:'',
         eveningTime:'',
         clinicPhone:'',
-        registrationDate:''
+        registrationDate:'',
+        image:''
     })
-    const {id,clinicName,email,password,morningTime,afternoonTime,clinicAddress,eveningTime,clinicPhone,registrationDate} = user
+    const {id,clinicName,email,password,morningTime,afternoonTime,clinicAddress,eveningTime,image,
+        clinicPhone,registrationDate} = user
 
 
     // 5-----------------
@@ -190,7 +192,7 @@ export default function ClinicForm()
                             </FormGroup>
                         </Col>
 
-                        <Col md={12}>
+                        <Col md={8}>
                         <FormGroup>
                             <Label for="clinicAddress">
                             Address
@@ -201,6 +203,22 @@ export default function ClinicForm()
                             placeholder="Enter Address"
                             type='textarea'
                             value={clinicAddress}  
+                            onChange={e => onInputChange(e)}
+                            />
+                        </FormGroup>
+                        </Col>
+
+                        <Col md={4}>
+                        <FormGroup>
+                            <Label for="image">
+                            Image
+                            </Label>
+                            <Input
+                            id="image"
+                            name="image"
+                            placeholder="Image"
+                            type='image'
+                            value={image}  
                             onChange={e => onInputChange(e)}
                             />
                         </FormGroup>
