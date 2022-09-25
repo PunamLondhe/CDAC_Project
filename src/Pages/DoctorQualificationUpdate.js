@@ -70,6 +70,11 @@ const loaddoc = async () => {
     setUser(result.data)
   };
 
+  //for Close
+  const CloseForm = async (e) => {
+    navigate('/CDAC_Project/DoctorQualificationList')
+}
+
   
     return (
       <div>
@@ -246,9 +251,9 @@ const loaddoc = async () => {
                               <Button color="dark">
                                       Submit
                               </Button>
-                              <Button color="dark" className='ms-2' type='reset'>
-                                      Clear
-                              </Button>
+                              <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
+                            </Button>
                           </Container>
                       </Form>
                       

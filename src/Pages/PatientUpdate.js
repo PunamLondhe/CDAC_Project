@@ -82,6 +82,10 @@ export default function PatientUpdate()
       setUser(result.data)
     };
 
+    //for Close
+    const CloseForm = async (e) => {
+        navigate('/CDAC_Project/PatientList')
+    }
 
   return (
     <div>
@@ -247,9 +251,9 @@ export default function PatientUpdate()
                             <Button className='btn btn-success btn-block'>
                                     Update
                             </Button>
-                            {/* <Button color="dark" className='ms-2' type='reset'>
-                                
-                            </Button> */}
+                            <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
+                            </Button>
                         </Container>
                     </Form>
 

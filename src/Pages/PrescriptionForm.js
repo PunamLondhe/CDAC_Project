@@ -45,6 +45,13 @@ export default function PrescriptionForm()
         // navigate('/CDAC_Project/PatientViewForDoctor/${patientId}')
     }
 
+
+    //for Close
+    const CloseForm = async (e) => {
+        navigate('/CDAC_Project/PrescriptionList')
+    }
+
+
   return (
     <div>
         <Container style={{width:800}} className="mt-20">
@@ -219,8 +226,8 @@ export default function PrescriptionForm()
                             <Button color="dark">
                                     Submit
                             </Button>
-                            <Button color="dark" className='ms-2' type='reset'>
-                                    Clear
+                            <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
                             </Button>
                         </Container>
                     </Form>

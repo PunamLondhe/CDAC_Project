@@ -66,6 +66,12 @@ export default function PatientForm()
         navigate('/CDAC_Project/PatientList')
     }
 
+    //for Close
+    const CloseForm = async (e) => {
+        navigate('/CDAC_Project/PatientList')
+    }
+   
+
   return (
     <div>
         <Container style={{width:800}} className="mt-20">
@@ -233,7 +239,9 @@ export default function PatientForm()
                             {/* <Link className="btn btn-primary" to="/CDAC_Project/PrescriptionForm">
                             Prescription Details
                             </Link> */}
-                            
+                            <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
+                            </Button>
                         </Container>
                     </Form>
 

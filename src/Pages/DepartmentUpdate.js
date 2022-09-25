@@ -60,6 +60,10 @@ export default function DepartmentUpdate()
         setUser(result.data)
       };
     
+      //for Close
+    const CloseForm = async (e) => {
+        navigate('/CDAC_Project/DepartmentList')
+    }
 
   return (
     <div>
@@ -128,8 +132,8 @@ export default function DepartmentUpdate()
                             <Button color="dark">
                                     Submit
                             </Button>
-                            <Button color="dark" className='ms-2' type='reset'>
-                                    Clear
+                            <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
                             </Button>
                         </Container>
                     </Form>

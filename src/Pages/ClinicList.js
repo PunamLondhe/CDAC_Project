@@ -34,30 +34,45 @@ const ClinicList = () => {
         loadUser();
     }
 
+
+    //for Search
+    const [search, setSearch] = useState("");
+    // console.log(users.filter(user=>user.clinicName.toLowerCase().include("p")));
+
   return (
     <div>
         <Container style={{width:1200}} className="mt-20">
             <Card color='dark' outline className='mt-20'>
                 <CardHeader>
                     <h1>Clinic'S List</h1>
-
+                    <br></br>
                     <Row>
-                        <Col md={7}>
-                            
+                        <Col md={9}>
+                        <Input
+                            type='text'
+                            bsSize="lg"
+                            placeholder='Search here'
+
+                            //for Search
+                            onChange={e => setSearch(e.target.value)}
+                        />
+                        
                         </Col>
-                        <Col md={3}></Col>
+                        <Col md={1}></Col>
                         <Col md={2}>
                             <center>
                             <Button
                                 color="success"
                                 outline
-                                //size="sm"
+                                size="lg"
+                                
                                 //for goto Clinic form
                                 onClick={()=>{
                                     navigate("/CDAC_Project/ClinicForm")
                                 }}
                             >
                                 + Add Clinic
+                                
                             </Button>
                             </center>
                         </Col>
@@ -100,7 +115,11 @@ const ClinicList = () => {
                                 // private String afternoonTime;
                                 // private String eveningTime;
                                 // private String registrationDate;
-                                users.map(item =>
+
+                                // users.map(item =>
+                                //for serach
+                                users.filter(user=>user.clinicName.toLowerCase().include(search))
+                                .map(item =>
                                     <tr>
                                         <td>{item.id}</td>
                                         <td>{item.clinicName}</td>

@@ -48,6 +48,11 @@ export default function DoctorQualificationForm()
         navigate('/CDAC_Project/DoctorQualificationList')
     }
 
+    //for Close
+    const CloseForm = async (e) => {
+        navigate('/CDAC_Project/DoctorQualificationList')
+    }
+
   return (
     <div>
         <Container style={{width:800}} className="mt-20">
@@ -223,8 +228,8 @@ export default function DoctorQualificationForm()
                             <Button color="dark">
                                     Submit
                             </Button>
-                            <Button color="dark" className='ms-2' type='reset'>
-                                    Clear
+                            <Button color="dark" className='ms-2' type='reset' onClick={e => CloseForm(e)}>
+                                    Close
                             </Button>
                         </Container>
                     </Form>
